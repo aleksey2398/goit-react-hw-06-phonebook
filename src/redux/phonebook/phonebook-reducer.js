@@ -5,9 +5,11 @@ import { addContact, deleteContact, filterContacts } from "./phonebook-actions";
 const items = createReducer([], {
   [addContact]: (state, action) => {
     if (
-      state
-        .map((contact) => contact.name.toLowerCase())
-        .includes(action.payload.name.toLowerCase())
+      state 
+      .some(state => state.name.toLowerCase() === action.payload.name.toLowerCase())
+
+       /* .map((contact) => contact.name.toLowerCase())
+        .includes(action.payload.name.toLowerCase())*/
     ) {
       alert(`${action.payload.name} is already in contacts`);
       return [...state];
