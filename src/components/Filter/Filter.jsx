@@ -8,6 +8,7 @@ import styles from "./Filter.module.css";
 const Filter = () => {
   const dispatch = useDispatch();
   const value = useSelector(getFilter);
+  
   const onChange = (e) => dispatch(filterContacts(e.target.value));
   return (
     <label>

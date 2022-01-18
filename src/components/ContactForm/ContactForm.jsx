@@ -5,12 +5,14 @@ import InputField from "../InputField/InputField";
 import inputAttr from "../InputField/InputAttr";
 import { addContact } from "../../redux/phonebook/phonebook-actions";
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 function ContactForm() {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
   const dispatch = useDispatch();
-
+  const contacts = useSelector((state) =>state.contacts.items)
+  
   const handleNameChange = (e) => {
     setName(e.target.value);
   };
@@ -20,6 +22,12 @@ function ContactForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+  //const isName = contacts.some(state => state.toLowerCase() === name.toLowerCase())
+  //if(isName){
+    //return alert(`${name} is already in contacts`);
+
+ // }
+
     dispatch(addContact({ name, number }));
     reset();
   };
